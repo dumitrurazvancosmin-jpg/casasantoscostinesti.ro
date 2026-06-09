@@ -1227,5 +1227,37 @@
   </div>
 </footer>
 
+
+<script>
+  // Track WhatsApp clicks as conversions
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      gtag('event', 'conversion_whatsapp', {
+        'event_category': 'contact',
+        'event_label': 'whatsapp_click'
+      });
+    });
+  });
+
+  // Track phone call clicks as conversions
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      gtag('event', 'conversion_telefon', {
+        'event_category': 'contact',
+        'event_label': el.getAttribute('href')
+      });
+    });
+  });
+
+  // Track Turistinfo clicks
+  document.querySelectorAll('a[href*="turistinfo.ro"]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      gtag('event', 'click_turistinfo', {
+        'event_category': 'outbound',
+        'event_label': el.getAttribute('href')
+      });
+    });
+  });
+</script>
 </body>
 </html>
