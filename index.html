@@ -76,7 +76,8 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  html, body { max-width: 100%; }
 
   body {
     font-family: 'Outfit', sans-serif;
@@ -442,7 +443,7 @@
 
   .gal-btn:hover { background: var(--sun); border-color: var(--sun); color: var(--ink); }
 
-  .gal-track-wrap { overflow: hidden; margin: 0 -1.4rem; padding: 0 1.4rem; }
+  .gal-track-wrap { overflow: hidden; margin: 0 -1.4rem; padding: 0 1.4rem; max-width: 100vw; }
 
   .gal-track {
     display: flex;
