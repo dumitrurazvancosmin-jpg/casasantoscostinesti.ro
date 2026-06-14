@@ -748,59 +748,168 @@
   .pol p { font-size: 0.88rem; color: var(--muted); }
   .pol strong { color: var(--ink); font-weight: 600; }
 
-  /* ───────── REVIEW ───────── */
+  /* ───────── REVIEW CAROUSEL ───────── */
   .review { background: var(--deep); color: var(--white); }
   .review .sec-label { color: var(--sun); }
   .review .sec-label::before { background: var(--sun); }
-  .review .sec-title { color: var(--white); }
+  .review .sec-title { color: var(--white); margin-bottom: 0; }
 
-  .rev-card {
-    margin-top: 2.4rem;
-    max-width: 720px;
+  .rev-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.4rem;
+  }
+
+  .rev-score-box {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .rev-score-big {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: var(--sun);
+    line-height: 0.9;
+  }
+
+  .rev-score-sub {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+
+  .rev-carousel { position: relative; }
+
+  .rev-slides {
     position: relative;
+    min-height: 280px;
+  }
+
+  .rev-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    max-width: 800px;
     padding-left: 2rem;
     border-left: 4px solid var(--sun);
   }
 
-  .rev-score {
-    font-family: 'Syne', sans-serif;
-    font-size: 3.4rem;
-    font-weight: 800;
+  .rev-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .rev-stars {
     color: var(--sun);
-    line-height: 1;
-  }
-
-  .rev-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    margin: 0.4rem 0 1.3rem;
-  }
-
-  .rev-text {
-    font-size: 1.25rem;
-    font-weight: 300;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.92);
+    font-size: 1.05rem;
+    letter-spacing: 0.18em;
     margin-bottom: 1rem;
   }
 
-  .rev-meta { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
-
-  .rev-link {
-    display: inline-block;
-    margin-top: 1.4rem;
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--sun);
-    text-decoration: none;
-    border-bottom: 1.5px solid rgba(255,201,60,0.45);
-    padding-bottom: 3px;
+  .rev-quote {
+    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.94);
+    margin-bottom: 1.4rem;
   }
+
+  .rev-author {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .rev-author strong { color: var(--white); font-weight: 600; }
+
+  .rev-badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: var(--sun);
+    padding: 0.22rem 0.7rem;
+    border-radius: 100px;
+    vertical-align: middle;
+  }
+
+  /* "see all reviews" final slide */
+  .rev-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    border-left-color: var(--coral);
+  }
+  .rev-more-icon {
+    font-size: 2.4rem;
+    color: var(--sun);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+  .rev-more-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+  .rev-more-sub {
+    font-size: 0.85rem;
+    color: var(--sun);
+    letter-spacing: 0.04em;
+  }
+
+  .rev-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .rev-btn {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.32);
+    background: transparent;
+    color: var(--white);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .rev-btn:hover { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+
+  .rev-dots {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .rev-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.28);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .rev-dot.active { background: var(--sun); transform: scale(1.25); }
 
   /* ───────── CTA ───────── */
   .cta {
@@ -915,6 +1024,9 @@
     .social-inner { flex-direction: column; text-align: center; }
     .nav-cta span { display: none; }
     .nav-cta { padding: 0.65rem 0.9rem; }
+    .rev-slides { min-height: 420px; }
+    .rev-slide { padding-left: 1.2rem; }
+    .rev-head { margin-bottom: 1.8rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1151,15 +1263,81 @@
 <!-- REVIEW -->
 <section class="review" id="recenzii">
   <div class="container">
-    <p class="sec-label">Ce spun turiștii</p>
-    <h2 class="sec-title">Recenzii <em style="color:var(--sun)">autentice</em></h2>
-    <div class="rev-card">
-      <div class="rev-score">10</div>
-      <p class="rev-label">Excepțional — nota medie pe 16 recenzii</p>
-      <p class="rev-text">"Casa are la dispoziție tot ce ai nevoie pentru un sejur liniștit alături de familie. Ne-am simțit excelent, iar gazdele ne-au tratat foarte bine."</p>
-      <p class="rev-meta">Turist verificat · via Turistinfo.ro</p>
-      <br>
-      <a class="rev-link" href="https://www.turistinfo.ro/costinesti/cazare-costinesti/casa_santos/reviews-casa_santos-c125224.html" target="_blank" rel="noopener">Citește toate recenziile →</a>
+    <div class="rev-head">
+      <div>
+        <p class="sec-label">Ce spun turiștii</p>
+        <h2 class="sec-title">Recenzii <em style="color:var(--sun)">autentice</em></h2>
+      </div>
+      <div class="rev-score-box">
+        <span class="rev-score-big">10</span>
+        <span class="rev-score-sub">din 16 recenzii<br>pe Turistinfo</span>
+      </div>
+    </div>
+
+    <div class="rev-carousel">
+      <div class="rev-slides" id="revSlides">
+
+        <article class="rev-slide active">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Foarte frumos și liniștit, oameni foarte cumsecade. Am stat 4 nopți și nu am întâmpinat nicio problemă, am avut la dispoziție un foișor generos, camere curate și dotate, o experiență de nota 10. Aceasta e atât recenzia mea cât și a întregului grup cu care am fost.</p>
+          <div class="rev-author"><strong>Lungu</strong> · din Costinești <span class="rev-badge">Grup</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Am stat la Casa Santos pe perioada festivalului Beach, please! Și totul a fost excelent! Liniște, curățenie, camere confortabile și gazde super primitoare. Ne-am simțit ca acasă și am avut parte de tot ce ne trebuia după o zi plină de distracție.</p>
+          <div class="rev-author"><strong>Mușat Alexandru</strong> · din Ciorogârla, Ilfov <span class="rev-badge">Beach Please</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Pentru grupul nostru a fost perfect — curat, liniștit și în plus personalul este foarte amabil. Nu e departe de plajă, magazinele sunt aproape, perfect pentru un grup care vrea să se distreze. Gazda ne-a arătat drumul cel mai scurt către plajă și câteva informații utile.</p>
+          <div class="rev-author"><strong>Codreanu Remus</strong> · din Ploiești <span class="rev-badge">Grup</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Camerele sunt foarte curate, bine dotate cu orice ar fi nevoie: aer condiționat, frigider în cameră, televizor, paturi confortabile. Proprietarii au fost foarte primitori cu grupul nostru de prieteni. Foișorul e un fel de bucătărie de vară, foarte bine dotat. Această cazare ne-a asigurat succesul unei vacanțe perfecte.</p>
+          <div class="rev-author"><strong>Andrei Baboi</strong> · din Mănăstirea Humorului <span class="rev-badge">Grup</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Casa are la dispoziție tot ce ai nevoie pentru un sejur liniștit alături de familie. Ne-am simțit excelent, iar gazdele ne-au tratat foarte bine, răspunzând oricând la cerințele noastre. Curățenie, confort, plaja la aproximativ 10 minute. Copiii s-au simțit foarte bine.</p>
+          <div class="rev-author"><strong>Dumitru Maria</strong> · din Pitești <span class="rev-badge">Familie</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Liniște, odihnă, camere mari și răcoroase. Foișor cu toate dotările, cafeaua de dimineață care este din partea casei și smochinul parfumat pe care-l privești de pe terasă. Curățenie și amabilitate din partea gazdelor. Mi-a plăcut foarte mult și o să revin cu drag anul următor!</p>
+          <div class="rev-author"><strong>Ioana</strong> · din București <span class="rev-badge">Cuplu</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Gazdele extrem de ospitaliere, primitoare, ne-au făcut să ne simțim ca și cum am face parte din familie pe perioada șederii. Ne-au pus la dispoziție nu doar dotările cazării, ci și cele din confortul casei proprii. Curățenie exemplară, condiții bune, aer condiționat, apă caldă — totul ideal pentru un sejur la mare.</p>
+          <div class="rev-author"><strong>Geovana</strong> · din Botoșani <span class="rev-badge">Cuplu</span></div>
+        </article>
+
+        <article class="rev-slide">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">Am avut parte de o experiență plăcută, de la rezervarea cazării până la condițiile întâlnite la fața locului. Exact ceea ce am avut nevoie noi ca și tineri mereu pe fugă. Recomand cu toată încrederea.</p>
+          <div class="rev-author"><strong>Boncuț Sebastian</strong> · din Homorodu de Jos <span class="rev-badge">Cuplu tânăr</span></div>
+        </article>
+
+        <a class="rev-slide rev-more" href="https://www.turistinfo.ro/costinesti/cazare-costinesti/casa_santos/reviews-casa_santos-c125224.html" target="_blank" rel="noopener">
+          <span class="rev-more-icon">★</span>
+          <span class="rev-more-text">Vezi toate cele 16 recenzii</span>
+          <span class="rev-more-sub">Nota 10/10 pe Turistinfo →</span>
+        </a>
+
+      </div>
+
+      <div class="rev-controls">
+        <button class="rev-btn" id="revPrev" aria-label="Recenzia anterioară">←</button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-btn" id="revNext" aria-label="Recenzia următoare">→</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1247,6 +1425,51 @@
 
     function next() { go((current + 1) % slides.length); }
     function restart() { clearInterval(timer); timer = setInterval(next, 6000); }
+    restart();
+  })();
+
+  /* ── Review carousel ── */
+  (function () {
+    var slides = document.querySelectorAll('.rev-slide');
+    var dotsWrap = document.getElementById('revDots');
+    var prev = document.getElementById('revPrev');
+    var next = document.getElementById('revNext');
+    var current = 0, timer;
+
+    slides.forEach(function (_, i) {
+      var d = document.createElement('button');
+      d.className = 'rev-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Recenzia ' + (i + 1));
+      d.addEventListener('click', function () { go(i); restart(); });
+      dotsWrap.appendChild(d);
+    });
+
+    var dots = dotsWrap.querySelectorAll('.rev-dot');
+
+    function go(i) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function advance() { go(current + 1); }
+    function restart() { clearInterval(timer); timer = setInterval(advance, 7000); }
+
+    prev.addEventListener('click', function () { go(current - 1); restart(); });
+    next.addEventListener('click', function () { go(current + 1); restart(); });
+
+    /* swipe on touch */
+    var wrap = document.getElementById('revSlides');
+    var sx = 0;
+    wrap.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', function (e) {
+      var d = e.changedTouches[0].clientX - sx;
+      if (d < -45) { go(current + 1); restart(); }
+      else if (d > 45) { go(current - 1); restart(); }
+    });
+
     restart();
   })();
 
